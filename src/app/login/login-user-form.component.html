@@ -1,0 +1,27 @@
+
+<form (submit)="onSubmit()" #loginForm="ngForm" novalidate>
+    <div>
+        <label for="user">User</label>
+        <input type="text" name="user" [(ngModel)]="name" 
+               required minlength="3" #userField="ngModel"
+               [ngStyle]="{ 'outline-color': userField.dirty && userField.valid ? 'green' : undefined }"/>
+        <!-- [(ngModel)]="<name on property on the components code. >" ngModel directive is used to two way data binding -->
+        <div class="alert alert-danger" *ngIf="(loginForm.submitted || userField.touched) && userField.errors">
+        <div [hidden]="!userField.errors.required">User is required!</div>
+        <div [hidden]="!userField.errors.minlength">Your user is atleast 3 caracters long!</div>
+        </div>    
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" [(ngModel)]="password" 
+               required minlength="5" #passwordField="ngModel"
+               [ngStyle]="{ 'outline-color': passwordField.dirty && passwordField.valid ? 'green' : undefined }"/>
+        <div class="alert alert-danger"*ngIf="(loginForm.submitted || passwordField.touched) && passwordField.errors">
+        <div [hidden]="!passwordField.errors.required">Password is required!</div>
+        <div [hidden]="!passwordField.errors.minlength">Your password need to be atleast 5 caracters long!</div>
+        </div>  
+    </div>
+    <div>
+        <button>Login</button>
+    </div>
+</form>
