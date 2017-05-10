@@ -11,13 +11,14 @@ export class PostListComponent implements OnInit{
     
     posts: Post[];
     
-    constructor(private entryService: PostService){
+    constructor(private postService: PostService){
  
     }
 
     ngOnInit(){
-        this.entryService
-            .getPosts()
-            .then(posts => this.posts = posts );
+        this.postService.getPosts()
+            .subscribe(posts => {
+                this.posts = posts;
+            });
     }
 }
