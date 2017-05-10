@@ -17,32 +17,7 @@ password: string;
  @ViewChild('loginForm') loginForm: NgForm;
 
  constructor(private authService: AuthService){}
-/*
- onSubmit(loginForm: NgForm){
-        if(this.loginForm.invalid) return;
-        let user = {name: this.name, password: this.password};
-        this.loginService.loginUser(user)
-        .then(() => {
-            this.loginForm.resetForm();
-        });
- }
-*/
-/*
-oldOnSubmit(loginForm: NgForm){
-    if(this.loginForm.invalid) return;
-    let user = new User()
-    user.name = this.name;
-    user.password = this.password; 
-    this.loginService.loginUser(user);
-}
-*/
-/*
-OldonSubmit(){
-    if(this.loginForm.invalid) return;
-    let user = {name: this.name, password: this.password}
-    console.log(this.loginService.loginUserHttp(user));
-}
-*/
+
     onSubmit(loginForm: NgForm) {
         if(this.loginForm.invalid) return;
         this.authService.login(this.name, this.password)
