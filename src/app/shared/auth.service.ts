@@ -16,8 +16,8 @@ export class AuthService {
 
     login(username: string, password: string): Observable<boolean> {
          let headers = new Headers(); 
-         headers.append('Content-Type','multipart/form-data');
-        return this.http.post('http://forening-cms.herokuapp.com/login', JSON.stringify({ username: username, password: password }),{headers: headers})
+     //    headers.append('Content-Type','multipart/form-data');
+        return this.http.post('https://forening-cms.herokuapp.com/login', JSON.stringify({ username: username, password: password }))
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
@@ -36,5 +36,34 @@ export class AuthService {
                 }
             });
     }
+       /**
+        * This is a test function that I use to track down the problem with the API
+        * call to Lisas backend. It will be removed later on.
+        * http://jsonplaceholder 
+        */
+        postTest():Observable<boolean>{
+          
+          //hardcoded object to send in post      
+          var testPost =  {
+                title: 'foo',
+                body: 'bar',
+                userId: 1
+                }
+
+            return this.http.post('https://jsonplaceholder.typicode.com/posts', JSON.stringify(testPost))
+            .map( (res: Response) => {
+             
+             if(res.status > 200 || res.status < 300){
+                 console.debug('PostTest', res.json());
+                 // return true to indicate successful post.
+                    return true;   
+             }else{
+                 console.debug('PostTest', 'Fail to post');
+                 // return false to indicate failed post
+                    return false;
+             }
+            }); 
+        }      
+    
 
 }

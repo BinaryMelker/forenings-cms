@@ -32,6 +32,25 @@ password: string;
                 }
             });
     }
+  /**
+   * Test code to call the postTest to the test API.
+   * http://jsonplaceholder
+   */
+    onSubmitTest(loginForm: NgForm) {
+        if(this.loginForm.invalid) return;
+        this.authService.postTest()
+            .subscribe(result => {
+                if (result === true) {
+                    // login successful
+                    console.log('User login successfull!')
+                } else {
+                    // login failed
+                    console.error('Username or password is incorrect');
+                    
+                }
+            });         
+    }
+
 
 
 } 
