@@ -1,5 +1,5 @@
 
-<form (submit)="onSubmit()" #loginForm="ngForm" novalidate>
+<form (submit)="onSubmit()" #loginForm="ngForm" enctype="multipart/form-data" novalidate>
     <div>
         <label for="user">User</label>
         <input type="text" name="user" [(ngModel)]="name" 
