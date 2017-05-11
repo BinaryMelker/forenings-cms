@@ -1,8 +1,8 @@
 
 <form (submit)="onSubmit()" #loginForm="ngForm" enctype="multipart/form-data" novalidate>
     <div>
-        <label for="user">User</label>
-        <input type="text" name="user" [(ngModel)]="name" 
+        <label for="email">E-mail</label>
+        <input type="text" name="email" [(ngModel)]="email" 
                required minlength="3" #userField="ngModel"
                [ngStyle]="{ 'outline-color': userField.dirty && userField.valid ? 'green' : undefined }"/>
         <!-- [(ngModel)]="<name on property on the components code. >" ngModel directive is used to two way data binding -->
