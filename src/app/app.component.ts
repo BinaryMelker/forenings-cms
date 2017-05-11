@@ -8,8 +8,7 @@ import { AuthService } from './shared/auth.service'
 })
 export class AppComponent {
   
-
-constructor(authService: AuthService){}
+private isLoggedIn: true;
 
 }
 

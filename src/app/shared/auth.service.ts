@@ -3,20 +3,22 @@ import { Http, Headers, Response } from '@angular/http';
 import { User } from '../shared/user.model';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
+
  
 @Injectable()
 export class AuthService {
     public token: string;
-    
  
-    constructor(private http: Http) {}
+    constructor(private http: Http) {
+     
+    }
  
     /**
      * Log in funktion;
      */
  login(user: User): Observable<boolean> {
         console.log('Stringefied request', JSON.stringify(user) );
-       
+        
         return this.http.post('https://forening-cms.herokuapp.com/login', user)
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
@@ -24,7 +26,7 @@ export class AuthService {
                 if (token) {
                     // set token property
                     this.token = token;
-                
+                    
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify({ token: token }));
  

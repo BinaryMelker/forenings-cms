@@ -20,7 +20,6 @@ import { ApiService } from './shared/api.service';
 
 @NgModule({
   declarations: [
-    //Dont forget to declear the components to Melker!
     AppComponent,
     LoginComponent,
     LandingPageComponent,
@@ -37,7 +36,7 @@ import { ApiService } from './shared/api.service';
   providers: [
     AuthGuard,
     AuthService,
-    ApiService
+    ApiService,
      
   ],
   bootstrap: [AppComponent]

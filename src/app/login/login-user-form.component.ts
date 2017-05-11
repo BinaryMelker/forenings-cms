@@ -5,12 +5,13 @@ import { User } from '../shared/user.model'
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../shared/auth.service';
 
+
 @Component({
     selector: '<app-login-form>',
     templateUrl: './login-user-form.component.html'
 })
 export class LoginUserFormComponent {
-user: User;
+user: any;
 email: string;
 password: string;
  @ViewChild('loginForm') loginForm: NgForm;
@@ -20,7 +21,7 @@ password: string;
     onSubmit(loginForm: NgForm) {
         if(this.loginForm.invalid) return;
         this.user = new User();
-        this.user.email = this.email;
+        this.user.email = this.password;
         this.user.password = this.password;
         
 
