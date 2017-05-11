@@ -5,10 +5,12 @@ import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthGuard } from './guards/auth.guard';
 import { PostListComponent } from './post-list/post-list.component';
+import { LinkListComponent } from './link-list/link-list.component';
 
 const appRoutes: Routes = [ 
     { path: '', component: LandingPageComponent },
     { path: 'posts', component: PostListComponent },
+    { path: 'links', component: LinkListComponent },
     
     //{ path: '', component: LandingPageComponent, canActivate: [AuthGuard] },
  

@@ -11,11 +11,12 @@ import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginUserFormComponent } from './login/login-user-form.component';
 import { PostListComponent } from './post-list/post-list.component';
+import { LinkListComponent } from './link-list/link-list.component';
 
 //Providers
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './shared/auth.service';
-import { PostService } from './shared/post.service';
+import { ApiService } from './shared/api.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PostService } from './shared/post.service';
     LoginComponent,
     LandingPageComponent,
     LoginUserFormComponent,
-    PostListComponent
+    PostListComponent,
+    LinkListComponent
   ],
   imports: [
     AppRouting,
@@ -35,7 +37,7 @@ import { PostService } from './shared/post.service';
   providers: [
     AuthGuard,
     AuthService,
-    PostService
+    ApiService
      
   ],
   bootstrap: [AppComponent]
