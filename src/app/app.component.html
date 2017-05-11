@@ -1,2 +1,39 @@
 <!-- <app-landing-page></app-landing-page> -->
+
+
+<div class="container">
+
+<header>
+   <h1>{{title}}</h1>
+   <div>
+     <app-loggin></app-loggin>
+   </div>
+</header>
+
+<div>  
+<nav>
+  <ul>
+    <li><a href="/">Hem</a></li> 
+    <li><a href="/posts">posts</a></li>
+    <li><a href="#">links</a></li>
+<div id="hidden"> 
+    <li><a href="#">Edit posts</a></li>
+    <li><a href="#">Edit links</a></li>
+</div>    
+  </ul>
+</nav>
+</div>
+ 
+
+<div class="content">
 <router-outlet></router-outlet>
+</div>
+
+<footer>Copyright &copy; Lisa &#38; Melker Co.</footer>
+
+</div>
+
+
+
+
+<!-- -->
