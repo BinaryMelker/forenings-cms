@@ -21,7 +21,7 @@ password: string;
     onSubmit(loginForm: NgForm) {
         if(this.loginForm.invalid) return;
         this.user = new User();
-        this.user.email = this.password;
+        this.user.email = this.email;
         this.user.password = this.password;
         
 
@@ -30,6 +30,7 @@ password: string;
             .subscribe(result => {
                 if (result === true) {
                     // login successful
+                    this.loginForm.reset()
                     console.log('User login successfull!')
                 } else {
                     // login failed
