@@ -1,7 +1,6 @@
 
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-//import { LoginService } from '../shared/login.service';
 import { User } from '../shared/user.model'
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../shared/auth.service';
@@ -11,8 +10,8 @@ import { AuthService } from '../shared/auth.service';
     templateUrl: './login-user-form.component.html'
 })
 export class LoginUserFormComponent {
-
-name: string;
+user: User;
+email: string;
 password: string;
  @ViewChild('loginForm') loginForm: NgForm;
 
@@ -20,7 +19,13 @@ password: string;
 
     onSubmit(loginForm: NgForm) {
         if(this.loginForm.invalid) return;
-        this.authService.login(this.name, this.password)
+        this.user = new User();
+        this.user.email = this.email;
+        this.user.password = this.password;
+        
+
+        console.log('E-mail: ' + this.email + ' password: ' + this.password);
+        this.authService.login(this.user)
             .subscribe(result => {
                 if (result === true) {
                     // login successful
@@ -32,25 +37,6 @@ password: string;
                 }
             });
     }
-  /**
-   * Test code to call the postTest to the test API.
-   * http://jsonplaceholder
-   */
-    onSubmitTest(loginForm: NgForm) {
-        if(this.loginForm.invalid) return;
-        this.authService.postTest()
-            .subscribe(result => {
-                if (result === true) {
-                    // login successful
-                    console.log('User login successfull!')
-                } else {
-                    // login failed
-                    console.error('Username or password is incorrect');
-                    
-                }
-            });         
-    }
-
 
 
 } 

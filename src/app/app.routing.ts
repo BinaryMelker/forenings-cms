@@ -10,10 +10,7 @@ import { LinkListComponent } from './link-list/link-list.component';
 const appRoutes: Routes = [ 
     { path: '', component: LandingPageComponent },
     { path: 'posts', component: PostListComponent },
-    { path: 'links', component: LinkListComponent },
-    
-    //{ path: '', component: LandingPageComponent, canActivate: [AuthGuard] },
- 
+    { path: 'links', component: LinkListComponent, canActivate: [AuthGuard] },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 
