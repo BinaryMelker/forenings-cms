@@ -20,6 +20,10 @@ import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './shared/auth.service';
 import { ApiService } from './shared/api.service';
 
+//To support CORS
+import { BrowserXhr } from '@angular/http';
+import { CustExtBrowserXhr } from './shared/cust-ext-browser-xhr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,8 +46,18 @@ import { ApiService } from './shared/api.service';
     AuthGuard,
     AuthService,
     ApiService,
+    BrowserXhr,
+    CustExtBrowserXhr
      
   ],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }
+
+/**
+ * bootstrap(AppComponent, [
+ HTTP_PROVIDERS,
+ provide(BrowserXhr,{useClass:CustExtBrowserXhr})
+]);
+ */

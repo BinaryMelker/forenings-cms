@@ -32,11 +32,16 @@ export class ApiService {
  }
  /**
   *  Post a new link to server
+  * integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  *        crossorigin="anonymous"
   */
  postLink(link: Link, userToken: Token): Observable<boolean>{
         console.log('Stringefied request', JSON.stringify(link) );
         let headers = new Headers();
+        let bodey = { }
          headers.append('Authorization','JWT ' + userToken.token);
+         headers.append('Origin', 'http://localhost:5000');
+         headers.append('Access-Control-Request-Method', 'POST');
          console.debug('Authorization' + ' JWT ' + userToken.token);
          let options = new RequestOptions({ headers: headers });
         return this.http.post(this.api_url + '/links/create', link, headers)
