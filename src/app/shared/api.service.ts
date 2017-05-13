@@ -35,7 +35,7 @@ export class ApiService {
   */
  postLink(link: Link, userToken: Token): Observable<boolean>{
         console.log('Stringefied request', JSON.stringify(link) );
-        var headers = new Headers();
+        let headers = new Headers();
          headers.append('Authorization','JWT ' + userToken.token);
          console.debug('Authorization' + ' JWT ' + userToken.token);
          let options = new RequestOptions({ headers: headers });
