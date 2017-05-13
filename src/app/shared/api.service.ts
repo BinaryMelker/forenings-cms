@@ -1,10 +1,11 @@
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 //Import models
 import { Post } from './post.model';
 import { Link } from './link.model';
+import { Token } from './Token.model';
 
 @Injectable()
 export class ApiService {
@@ -29,5 +30,27 @@ export class ApiService {
     .map((response: Response) => response.json().links as Link[]);
 
  }
+ /**
+  *  Post a new link to server
+  */
+ postLink(link: Link, userToken: Token): Observable<boolean>{
+        console.log('Stringefied request', JSON.stringify(link) );
+        var headers = new Headers();
+         headers.append('Authorization','JWT ' + userToken.token);
+         console.debug('Authorization' + ' JWT ' + userToken.token);
+         let options = new RequestOptions({ headers: headers });
+        return this.http.post(this.api_url + '/links/create', link, headers)
+            .map((response: Response) => {
+
+                if(response.status == 200){
+                //Post sucsess
+                return true;
+                }else{
+                 console.error(response.status);
+                return false;    
+                }
+                
+            });
+    }
 
 }

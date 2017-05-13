@@ -12,6 +12,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginUserFormComponent } from './login/login-user-form.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { LinkListComponent } from './link-list/link-list.component';
+import { EditLinksComponent } from './edit-links/edit-links.component';
+import { EditLinkFormComponent } from './edit-links/edit-link-form.component';
 
 //Providers
 import { AuthGuard } from './guards/auth.guard';
@@ -25,7 +27,10 @@ import { ApiService } from './shared/api.service';
     LandingPageComponent,
     LoginUserFormComponent,
     PostListComponent,
-    LinkListComponent
+    LinkListComponent,
+    EditLinksComponent,
+    EditLinkFormComponent
+
   ],
   imports: [
     AppRouting,

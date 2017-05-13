@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
+import { Router } from '@angular/router';
 import { User } from '../shared/user.model';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
@@ -9,7 +10,7 @@ import 'rxjs/add/operator/map'
 export class AuthService {
     public token: string;
  
-    constructor(private http: Http) {
+    constructor(private http: Http, private router: Router) {
      
     }
  
@@ -43,6 +44,7 @@ export class AuthService {
         // clear token remove user from local storage to log user out
         this.token = null;
         localStorage.removeItem('currentUser');
+        this.router.navigateByUrl('/');
         console.log('Logged out' + ' ' + 'token=' + this.token + ' ' + 'localStorage=' + localStorage.currentUser);
     }
 
