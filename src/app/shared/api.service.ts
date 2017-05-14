@@ -48,7 +48,7 @@ export class ApiService {
 
                 if(response.status == 201){
                 //Post sucsess
-                console.error(response);
+                console.log(JSON.stringify(response));
                 return true;
                 }else{
                  console.error(response.status);
