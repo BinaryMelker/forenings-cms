@@ -39,9 +39,11 @@ export class ApiService {
         console.log('Stringefied request', JSON.stringify(link) );
         let headers = new Headers();
         let bodey = { }
-         headers.append('Authorization','JWT ' + userToken.token);
-         headers.append('Origin', 'http://localhost:5000');
-         headers.append('Access-Control-Request-Method', 'POST');
+        headers.append( 'Content-Type', 'application/json; charset=utf-8');
+        headers.append('Authorization','JWT ' + userToken.token);
+         
+         //headers.append('Origin', 'http://localhost:5000');
+         //headers.append('Access-Control-Request-Method', 'POST');
          console.debug('Authorization' + ' JWT ' + userToken.token);
          let options = new RequestOptions({ headers: headers });
         return this.http.post(this.api_url + '/links/create', link, headers)

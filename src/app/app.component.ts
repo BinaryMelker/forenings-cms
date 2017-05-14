@@ -8,7 +8,7 @@ import { AuthService } from './shared/auth.service'
 })
 export class AppComponent {
   
-private isLoggedIn: true;
+title = 'Förenings-CMS';
 
 }
 

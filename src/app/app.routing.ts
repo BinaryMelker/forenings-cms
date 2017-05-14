@@ -10,6 +10,7 @@ import { EditLinksComponent } from './edit-links/edit-links.component';
 
 const appRoutes: Routes = [ 
     { path: '', component: LandingPageComponent },
+    { path: 'login', component: LoginComponent },
     { path: 'posts', component: PostListComponent },
     { path: 'links', component: LinkListComponent },
     { path: 'editlinks', component: EditLinksComponent, canActivate: [AuthGuard]},
