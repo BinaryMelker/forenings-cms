@@ -1,7 +1,8 @@
 
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { User } from '../shared/user.model'
+import { Router } from '@angular/router';
+import { User } from '../shared/user.model';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../shared/auth.service';
 
@@ -16,7 +17,7 @@ email: string;
 password: string;
  @ViewChild('loginForm') loginForm: NgForm;
 
- constructor(private authService: AuthService){}
+ constructor(private authService: AuthService, private router: Router){}
 
     onSubmit(loginForm: NgForm) {
         if(this.loginForm.invalid) return;
@@ -30,7 +31,8 @@ password: string;
             .subscribe(result => {
                 if (result === true) {
                     // login successful
-                    this.loginForm.reset()
+                    this.loginForm.reset();
+                    this.router.navigateByUrl('/');
                     console.log('User login successfull!')
                 } else {
                     // login failed

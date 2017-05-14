@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     { path: 'links', component: LinkListComponent },
     { path: 'editlinks', component: EditLinksComponent, canActivate: [AuthGuard]},
     // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+   // { path: '**', redirectTo: '' }
 
 ];
 

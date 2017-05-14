@@ -34,9 +34,10 @@ token: Token;
      
         this.apiService.postLink(this.link, this.token)
             .subscribe(result => {
+                this.loginForm.reset()
                 if (result === true) {
                     // link successfully added
-                    this.loginForm.reset()
+            
                     console.log('link added')
                 } else {
                     // adding link failed

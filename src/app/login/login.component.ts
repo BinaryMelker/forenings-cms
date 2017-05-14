@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../shared/auth.service';
 
 @Component({
     selector: 'app-loggin',
@@ -9,10 +8,8 @@ import { AuthService } from '../shared/auth.service';
 })
 export class LoginComponent {
 
-constructor(private authService: AuthService){}
+constructor(){}
 
-onClick(){
-    this.authService.logout();
-}
+
 
 }

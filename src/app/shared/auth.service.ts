@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
 import { User } from '../shared/user.model';
 import { Observable } from 'rxjs';
@@ -19,8 +19,8 @@ export class AuthService {
      */
  login(user: User): Observable<boolean> {
         console.log('Stringefied request', JSON.stringify(user) );
-        
-        return this.http.post('https://forening-cms.herokuapp.com/login', user)
+        let options = this.prepareRequestOptions();
+        return this.http.post('https://forening-cms.herokuapp.com/login', user, options)
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
@@ -51,5 +51,22 @@ export class AuthService {
      getToken(): string {
         return this.token;
      }
+
+    /**
+     *  This method is used for setting heders and if
+     *  a user is logged in Authorization.
+     */
+ 
+prepareRequestOptions():RequestOptions {
+
+        let headers = new Headers();
+       
+        headers.append( 'Content-Type', 'application/json; charset=utf-8' );
+        //headers.append( 'Origin', 'http://localhost:5000'); 
+        let options = new RequestOptions({ headers: headers, withCredentials: true });
+
+
+        return options;
+    }
 
 }

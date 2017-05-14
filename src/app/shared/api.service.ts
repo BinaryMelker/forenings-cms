@@ -18,7 +18,8 @@ export class ApiService {
   *  Get all posts from server.
   */
  getPosts(): Observable <Post[]> {
-    return this.http.get(this.api_url + '/posts/getAllVisible')
+     let options = this.prepareRequestOptions();
+    return this.http.get(this.api_url + '/posts/getAllVisible', options)
     .map((response: Response) => response.json().posts as Post[]);
  }
 
@@ -26,31 +27,28 @@ export class ApiService {
   *  Get all links from server.
   */
  getLinks(): Observable <Link[]> {
-    return this.http.get(this.api_url + '/links/getAll')
+    
+    let options = this.prepareRequestOptions();
+    
+    return this.http.get(this.api_url + '/links/getAll', options)
     .map((response: Response) => response.json().links as Link[]);
 
  }
  /**
   *  Post a new link to server
-  * integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  *        crossorigin="anonymous"
+  * 
   */
  postLink(link: Link, userToken: Token): Observable<boolean>{
         console.log('Stringefied request', JSON.stringify(link) );
-        let headers = new Headers();
-        let bodey = { }
-        headers.append( 'Content-Type', 'application/json; charset=utf-8');
-        headers.append('Authorization','JWT ' + userToken.token);
-         
-         //headers.append('Origin', 'http://localhost:5000');
-         //headers.append('Access-Control-Request-Method', 'POST');
-         console.debug('Authorization' + ' JWT ' + userToken.token);
-         let options = new RequestOptions({ headers: headers });
-        return this.http.post(this.api_url + '/links/create', link, headers)
+        let body = { url: link.url, name: link.name };
+        let options = this.prepareRequestOptions(userToken);
+        
+        return this.http.post(this.api_url + '/links/create', body, options)
             .map((response: Response) => {
 
-                if(response.status == 200){
+                if(response.status == 201){
                 //Post sucsess
+                console.error(response);
                 return true;
                 }else{
                  console.error(response.status);
@@ -59,5 +57,26 @@ export class ApiService {
                 
             });
     }
+
+    /**
+     *  This method is used for setting heders and if
+     *  a user is logged in Authorization.
+     */
+ 
+prepareRequestOptions(userToken?: Token):RequestOptions {
+
+        let headers = new Headers();
+        if(userToken){ 
+            headers.append( 'Authorization','JWT ' + userToken.token );
+         }
+        headers.append( 'Content-Type', 'application/json; charset=utf-8' );
+        //headers.append( 'Origin', 'http://localhost:5000'); 
+        let options = new RequestOptions({ headers: headers, withCredentials: true });
+
+
+        return options;
+    }
+    
+    
 
 }
