@@ -7,6 +7,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { PostListComponent } from './post-list/post-list.component';
 import { LinkListComponent } from './link-list/link-list.component';
 import { EditLinksComponent } from './edit-links/edit-links.component';
+import { EditPostsComponent } from './edit-posts/edit-posts.component';
 
 const appRoutes: Routes = [ 
     { path: '', component: LandingPageComponent },
@@ -14,8 +15,8 @@ const appRoutes: Routes = [
     { path: 'posts', component: PostListComponent },
     { path: 'links', component: LinkListComponent },
     { path: 'editlinks', component: EditLinksComponent, canActivate: [AuthGuard]},
-    // otherwise redirect to home
-   // { path: '**', redirectTo: '' }
+    { path: 'editposts', component: EditPostsComponent, canActivate: [AuthGuard]},
+    { path: '**', redirectTo: '' }
 
 ];
 

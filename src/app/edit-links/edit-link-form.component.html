@@ -1,11 +1,12 @@
-<form (submit)="onSubmit()" #linkForm="ngForm">
+<form (submit)="onSubmit()" #editLinkForm="ngForm">
+    <button (click)="clearForm()">Clear form</button>
     <div>
         <label for="url">Url</label>
         <input type="text" name="url" [(ngModel)]="url" 
                required minlength="5" #urlField="ngModel"
                [ngStyle]="{ 'outline-color': urlField.dirty && urlField.valid ? 'green' : undefined }"/>
         <!-- [(ngModel)]="<name on property on the components code. >" ngModel directive is used to two way data binding -->
-        <div class="alert alert-danger" *ngIf="(loginForm.submitted || urlField.touched) && urlField.errors">
+        <div class="alert alert-danger" *ngIf="(editLinkForm.submitted || urlField.touched) && urlField.errors">
         <div [hidden]="!urlField.errors.required">url is required!</div>
         <div [hidden]="!urlField.errors.minlength">Url is atleast 5 caracters long!</div>
         </div>    
@@ -15,12 +16,19 @@
         <input type="text" name="name" [(ngModel)]="name" 
                required minlength="3" #nameField="ngModel"
                [ngStyle]="{ 'outline-color': nameField.dirty && nameField.valid ? 'green' : undefined }"/>
-        <div class="alert alert-danger"*ngIf="(loginForm.submitted || nameField.touched) && nameField.errors">
+        <div class="alert alert-danger"*ngIf="(editLinkForm.submitted || nameField.touched) && nameField.errors">
         <div [hidden]="!nameField.errors.required">name is required!</div>
         <div [hidden]="!nameField.errors.minlength">The name need to be atleast 3 caracters long!</div>
         </div>  
     </div>
     <div>
-        <button>Add</button>
+        <button>Submit</button>
     </div>
 </form>
+
+
+<div *ngFor='let link of links; let i = index'>  
+     <a href="{{link.url}}" target="_blank">{{link.name}}</a>
+     <button (click)="fetchLink(i)">EditLink</button>
+     <button (click)="deleteLink(i)">Delete link</button>
+</div>

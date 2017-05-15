@@ -14,15 +14,13 @@ import { PostListComponent } from './post-list/post-list.component';
 import { LinkListComponent } from './link-list/link-list.component';
 import { EditLinksComponent } from './edit-links/edit-links.component';
 import { EditLinkFormComponent } from './edit-links/edit-link-form.component';
+import { EditPostsComponent } from './edit-posts/edit-posts.component';
+import { EditPostFormComponent } from './edit-posts/edit-post-form.component';
 
 //Providers
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './shared/auth.service';
 import { ApiService } from './shared/api.service';
-
-//To support CORS
-import { BrowserXhr } from '@angular/http';
-import { CustExtBrowserXhr } from './shared/cust-ext-browser-xhr';
 
 @NgModule({
   declarations: [
@@ -33,7 +31,9 @@ import { CustExtBrowserXhr } from './shared/cust-ext-browser-xhr';
     PostListComponent,
     LinkListComponent,
     EditLinksComponent,
-    EditLinkFormComponent
+    EditLinkFormComponent,
+    EditPostsComponent,
+    EditPostFormComponent
 
   ],
   imports: [
@@ -46,8 +46,6 @@ import { CustExtBrowserXhr } from './shared/cust-ext-browser-xhr';
     AuthGuard,
     AuthService,
     ApiService,
-    BrowserXhr,
-    CustExtBrowserXhr
      
   ],
   bootstrap: [AppComponent]
@@ -55,9 +53,4 @@ import { CustExtBrowserXhr } from './shared/cust-ext-browser-xhr';
 })
 export class AppModule { }
 
-/**
- * bootstrap(AppComponent, [
- HTTP_PROVIDERS,
- provide(BrowserXhr,{useClass:CustExtBrowserXhr})
-]);
- */
+

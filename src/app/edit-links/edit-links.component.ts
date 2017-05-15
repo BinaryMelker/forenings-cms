@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/api.service';
-import { Link } from '../shared/link.model';
+/*import { Link } from '../shared/link.model';*/
 
 
 @Component({
@@ -8,14 +8,14 @@ import { Link } from '../shared/link.model';
     templateUrl: 'edit-links.component.html',
     styleUrls: ['edit-links.component.css']
 })
-export class EditLinksComponent implements OnInit{
+export class EditLinksComponent /*implements OnInit*/{
     
-    links: Link[];
+    /*links: Link[];*/
     
     constructor(private apiService: ApiService){
  
     }
-
+/*
     ngOnInit(){
         console.debug('ngOnInit', 'EditLinksComponent');
         this.apiService.getLinks()
@@ -23,4 +23,5 @@ export class EditLinksComponent implements OnInit{
                 this.links = links;
             });
     }
+    */
 }

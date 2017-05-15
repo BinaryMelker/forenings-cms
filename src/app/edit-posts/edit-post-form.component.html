@@ -1,0 +1,33 @@
+<form (submit)="onSubmit()" #editPostForm="ngForm">
+    <button (click)="clearForm()">Clear form</button>
+    <div>
+        <label for="title">Title</label>
+        <input type="text" name="title" [(ngModel)]="title" 
+               required minlength="3" #titleField="ngModel"
+               [ngStyle]="{ 'outline-color': titleField.dirty && titleField.valid ? 'green' : undefined }"/>
+        <div class="alert alert-danger" *ngIf="(editPostForm.submitted || titleField.touched) && titleField.errors">
+        <div [hidden]="!titleField.errors.required">title is required!</div>
+        <div [hidden]="!titleField.errors.minlength">title is atleast 3 caracters long!</div>
+        </div>    
+    </div>
+    <div>
+        <label for="body">Body</label>
+        <input type="text" name="body" [(ngModel)]="body" 
+               required minlength="5" #bodyField="ngModel"
+               [ngStyle]="{ 'outline-color': bodyField.dirty && bodyField.valid ? 'green' : undefined }"/>
+        <div class="alert alert-danger"*ngIf="(editPostForm.submitted || bodyField.touched) && bodyField.errors">
+        <div [hidden]="!bodyField.errors.required">body is required!</div>
+        <div [hidden]="!bodyField.errors.minlength">The body need to be atleast 5 caracters long!</div>
+        </div>  
+    </div>
+    <div>
+        <button>Submit</button>
+    </div>
+</form>
+
+<div *ngFor='let post of posts; let i = index'>
+    <h3>{{post.title}}</h3>
+    <p>{{post.body}}<p>
+    <button (click)="fetchPost(i)">Edit Post</button>
+    <button (click)="deletePost(i)">Delete Post</button>    
+</div>
