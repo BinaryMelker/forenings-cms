@@ -5,7 +5,6 @@
         <input type="text" name="email" [(ngModel)]="email" 
                required minlength="3" #userField="ngModel"
                [ngStyle]="{ 'outline-color': userField.dirty && userField.valid ? 'green' : undefined }"/>
-        <!-- [(ngModel)]="<name on property on the components code. >" ngModel directive is used to two way data binding -->
         <div class="alert alert-danger" *ngIf="(loginForm.submitted || userField.touched) && userField.errors">
         <div [hidden]="!userField.errors.required">User is required!</div>
         <div [hidden]="!userField.errors.minlength">Your user is atleast 3 caracters long!</div>

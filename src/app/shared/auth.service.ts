@@ -62,7 +62,6 @@ prepareRequestOptions():RequestOptions {
         let headers = new Headers();
        
         headers.append( 'Content-Type', 'application/json; charset=utf-8' );
-        //headers.append( 'Origin', 'http://localhost:5000'); 
         let options = new RequestOptions({ headers: headers, withCredentials: true });
 
 

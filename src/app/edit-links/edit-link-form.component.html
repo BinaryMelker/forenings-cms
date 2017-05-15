@@ -5,7 +5,6 @@
         <input type="text" name="url" [(ngModel)]="url" 
                required minlength="5" #urlField="ngModel"
                [ngStyle]="{ 'outline-color': urlField.dirty && urlField.valid ? 'green' : undefined }"/>
-        <!-- [(ngModel)]="<name on property on the components code. >" ngModel directive is used to two way data binding -->
         <div class="alert alert-danger" *ngIf="(editLinkForm.submitted || urlField.touched) && urlField.errors">
         <div [hidden]="!urlField.errors.required">url is required!</div>
         <div [hidden]="!urlField.errors.minlength">Url is atleast 5 caracters long!</div>

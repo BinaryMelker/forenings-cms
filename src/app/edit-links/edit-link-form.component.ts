@@ -102,10 +102,7 @@ token: Token;
     }
 
     fetchLink(i: number){
-     /*   var object = this.links.slice(i, i+1);
-        this.url = object['0'].url;
-        this.name = object['0'].url
-        */
+
         this._id = this.links[i]._id;
         this.url = this.links[i].url;
         this.name = this.links[i].name;

@@ -12,9 +12,9 @@
     </div>
     <div>
         <label for="body">Body</label>
-        <input type="text" name="body" [(ngModel)]="body" 
+        <textarea type="text" name="body" [(ngModel)]="body" 
                required minlength="5" #bodyField="ngModel"
-               [ngStyle]="{ 'outline-color': bodyField.dirty && bodyField.valid ? 'green' : undefined }"/>
+               [ngStyle]="{ 'outline-color': bodyField.dirty && bodyField.valid ? 'green' : undefined }"></textarea>
         <div class="alert alert-danger"*ngIf="(editPostForm.submitted || bodyField.touched) && bodyField.errors">
         <div [hidden]="!bodyField.errors.required">body is required!</div>
         <div [hidden]="!bodyField.errors.minlength">The body need to be atleast 5 caracters long!</div>

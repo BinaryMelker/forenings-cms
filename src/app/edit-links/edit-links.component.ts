@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/api.service';
-/*import { Link } from '../shared/link.model';*/
 
 
 @Component({
@@ -8,20 +7,10 @@ import { ApiService } from '../shared/api.service';
     templateUrl: 'edit-links.component.html',
     styleUrls: ['edit-links.component.css']
 })
-export class EditLinksComponent /*implements OnInit*/{
-    
-    /*links: Link[];*/
+export class EditLinksComponent{
     
     constructor(private apiService: ApiService){
  
     }
-/*
-    ngOnInit(){
-        console.debug('ngOnInit', 'EditLinksComponent');
-        this.apiService.getLinks()
-            .subscribe(links => {
-                this.links = links;
-            });
-    }
-    */
+
 }

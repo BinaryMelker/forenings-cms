@@ -199,7 +199,6 @@ prepareRequestOptions(userToken?: Token):RequestOptions {
             headers.append( 'Authorization','JWT ' + userToken.token );
          }
         headers.append( 'Content-Type', 'application/json; charset=utf-8' );
-        //headers.append( 'Origin', 'http://localhost:5000'); 
         let options = new RequestOptions({ headers: headers, withCredentials: true });
 
 

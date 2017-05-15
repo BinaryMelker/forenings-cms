@@ -24,8 +24,6 @@ token: Token;
 
  constructor(private apiService: ApiService,private authService: AuthService){}
 
-
-
         ngOnInit(){
         console.debug('ngOnInit', 'EditpostsComponent');
         this.apiService.getPosts()
