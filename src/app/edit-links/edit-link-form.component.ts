@@ -39,7 +39,7 @@ token: Token;
     }
     
     
-    onSubmit(editLinkForm: NgForm) {
+    onSubmit() {
         if(this.editLinkForm.invalid) return;
         this.link = new Link();
         this.link._id = this._id;

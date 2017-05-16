@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "postinstall": "ng build --aot -prod",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -12,8 +13,10 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "1.0.2",
     "@angular/common": "^4.1.1",
     "@angular/compiler": "^4.1.1",
+    "@angular/compiler-cli": "^4.1.1",
     "@angular/core": "^4.1.1",
     "@angular/forms": "^4.1.1",
     "@angular/http": "^4.1.1",
@@ -22,8 +25,13 @@
     "@angular/router": "^4.1.1",
     "bcrypt": "^1.0.2",
     "core-js": "^2.4.1",
+    "express": "^4.15.2",
     "rxjs": "^5.3.1",
     "zone.js": "^0.8.4"
+  },
+  "engines": {
+    "node": "6.10.2",
+    "npm": "3.10.10"
   },
   "devDependencies": {
     "@angular/cli": "1.0.2",

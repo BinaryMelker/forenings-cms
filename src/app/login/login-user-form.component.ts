@@ -19,7 +19,7 @@ password: string;
 
  constructor(private authService: AuthService, private router: Router){}
 
-    onSubmit(loginForm: NgForm) {
+    onSubmit() {
         if(this.loginForm.invalid) return;
         this.user = new User();
         this.user.email = this.email;

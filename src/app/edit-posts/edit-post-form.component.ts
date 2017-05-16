@@ -36,7 +36,7 @@ token: Token;
     }
     
     
-    onSubmit(editPostForm: NgForm) {
+    onSubmit() {
         if(this.editPostForm.invalid) return;
         this.post = new Post();
         this.post._id = this._id;
