@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map'
 //Import models
 import { Post } from './post.model';
 import { Link } from './link.model';
-import { Token } from './Token.model';
+import { Token } from './token.model';
 
 @Injectable()
 export class ApiService {
